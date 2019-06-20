@@ -3,6 +3,7 @@
 package hunitalla
 
 import hunitalla.helpers.functions.integer.toSuperscript
+import kotlin.reflect.KClass
 
 open class Dimension(
     val L: Int = 0,
@@ -25,9 +26,8 @@ open class Dimension(
     val IntArray.N get() = get(5)
     val IntArray.J get() = get(6)
 
-    val si: Unit get() {
-
-    }
+    val quantityType: KClass<Quantity<*>> get() = TODO()
+    val si: SIUnit<*> get() = TODO()
 
     private val Int.baseStr
         get() = when (this) {
@@ -82,5 +82,3 @@ open class Dimension(
         }
     }
 }
-
-val dimensionsToSI

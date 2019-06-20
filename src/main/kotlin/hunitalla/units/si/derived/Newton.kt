@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived
 
-import hunitalla.Unit
+import hunitalla.SIUnit
 import hunitalla.quantities.derived.*
 
-object Newton : Unit("N", Force::class, Weight::class)
+object Newton : SIUnit<Force>("N", ::Force)

@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived.coherent
 
-import hunitalla.Unit
+import hunitalla.SIUnit
 import hunitalla.quantities.derived.coherent.Velocity
 
-object MetrePerSecond : Unit("SYMBOL", Velocity::class)
+object MetrePerSecond : SIUnit<Velocity>("SYMBOL", ::Velocity)

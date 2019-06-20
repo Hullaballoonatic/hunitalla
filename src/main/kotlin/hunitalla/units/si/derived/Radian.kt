@@ -1,7 +1,6 @@
 package hunitalla.units.si.derived
 
-import hunitalla.Unit
-import hunitalla.quantities.Numeric
+import hunitalla.SIUnit
 import hunitalla.quantities.derived.PlaneAngle
 
-object Radian : Unit("rad", PlaneAngle::class)
+object Radian : SIUnit<PlaneAngle>("rad", ::PlaneAngle)

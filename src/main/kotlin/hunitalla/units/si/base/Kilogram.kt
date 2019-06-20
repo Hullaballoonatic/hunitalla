@@ -1,6 +1,6 @@
 package hunitalla.units.si.base
 
-import hunitalla.Unit
+import hunitalla.SIUnit
 import hunitalla.quantities.Mass
 
-object Kilogram : Unit("g", Mass::class)
+object Kilogram : SIUnit<Mass>("g", ::Mass)

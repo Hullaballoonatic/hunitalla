@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived
 
-import hunitalla.Unit
+import hunitalla.SIUnit
 import hunitalla.quantities.derived.Frequency
 
-object Hertz : Unit("Hz", Frequency::class)
+object Hertz : SIUnit<Frequency>("Hz", ::Frequency)

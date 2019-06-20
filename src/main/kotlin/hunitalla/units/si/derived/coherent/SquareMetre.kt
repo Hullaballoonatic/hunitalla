@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived.coherent
 
-import hunitalla.Unit
+import hunitalla.SIUnit
 import hunitalla.quantities.derived.coherent.*
 
-object SquareMetre : Unit("m²", Area::class)
+object SquareMetre : SIUnit<Area>("m²", ::Area)

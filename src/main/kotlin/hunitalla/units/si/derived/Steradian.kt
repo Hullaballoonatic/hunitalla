@@ -1,7 +1,6 @@
 package hunitalla.units.si.derived
 
-import hunitalla.Unit
-import hunitalla.quantities.Numeric
+import hunitalla.SIUnit
 import hunitalla.quantities.derived.SolidAngle
 
-object Steradian : Unit("sr", SolidAngle::class)
+object Steradian : SIUnit<SolidAngle>("sr", ::SolidAngle)

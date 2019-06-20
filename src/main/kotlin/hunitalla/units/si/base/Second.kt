@@ -1,6 +1,6 @@
 package hunitalla.units.si.base
 
-import hunitalla.Unit
+import hunitalla.SIUnit
 import hunitalla.quantities.Time
 
-object Second : Unit("s", Time::class)
+object Second : SIUnit<Time>("s", ::Time)

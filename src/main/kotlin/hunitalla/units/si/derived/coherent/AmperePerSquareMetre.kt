@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived.coherent
 
-import hunitalla.Unit
+import hunitalla.SIUnit
 import hunitalla.quantities.derived.coherent.CurrentDensity
 
-object AmperePerSquareMetre : Unit("SYMBOL", CurrentDensity::class)
+object AmperePerSquareMetre : SIUnit<CurrentDensity>("SYMBOL", ::CurrentDensity)

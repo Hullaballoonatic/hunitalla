@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived
 
-import hunitalla.Unit
+import hunitalla.SIUnit
 import hunitalla.quantities.derived.Radioactivity
 
-object Becquerel : Unit("Bq", Radioactivity::class)
+object Becquerel : SIUnit<Radioactivity>("Bq", ::Radioactivity)

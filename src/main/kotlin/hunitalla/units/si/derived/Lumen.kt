@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived
 
-import hunitalla.Unit
+import hunitalla.SIUnit
 import hunitalla.quantities.derived.LuminousFlux
 
-object Lumen : Unit("lm", LuminousFlux::class)
+object Lumen : SIUnit<LuminousFlux>("lm", ::LuminousFlux)

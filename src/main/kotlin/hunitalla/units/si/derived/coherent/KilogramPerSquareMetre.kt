@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived.coherent
 
-import hunitalla.Unit
+import hunitalla.SIUnit
 import hunitalla.quantities.derived.coherent.SurfaceDensity
 
-object KilogramPerSquareMetre : Unit("SYMBOL", SurfaceDensity::class)
+object KilogramPerSquareMetre : SIUnit<SurfaceDensity>("SYMBOL", ::SurfaceDensity)

@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived
 
-import hunitalla.Unit
+import hunitalla.SIUnit
 import hunitalla.quantities.derived.MagneticFluxDensity
 
-object Tesla : Unit("T", MagneticFluxDensity::class)
+object Tesla : SIUnit<MagneticFluxDensity>("T", ::MagneticFluxDensity)

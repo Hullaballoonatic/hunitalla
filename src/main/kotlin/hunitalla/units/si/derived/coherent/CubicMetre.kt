@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived.coherent
 
-import hunitalla.Unit
+import hunitalla.SIUnit
 import hunitalla.quantities.derived.coherent.Volume
 
-object CubicMetre : Unit("m³", Volume::class)
+object CubicMetre : SIUnit<Volume>("m³", ::Volume)

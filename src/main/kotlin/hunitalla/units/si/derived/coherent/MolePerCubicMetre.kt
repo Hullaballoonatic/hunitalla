@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived.coherent
 
-import hunitalla.Unit
+import hunitalla.SIUnit
 import hunitalla.quantities.derived.coherent.Concentration
 
-object MolePerCubicMetre : Unit("SYMBOL", Concentration::class)
+object MolePerCubicMetre : SIUnit<Concentration>("SYMBOL", ::Concentration)

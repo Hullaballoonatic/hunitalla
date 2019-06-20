@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived.coherent
 
-import hunitalla.Unit
+import hunitalla.SIUnit
 import hunitalla.quantities.derived.coherent.Wavenumber
 
-object ReciprocalMetre : Unit("SYMBOL", Wavenumber::class)
+object ReciprocalMetre : SIUnit<Wavenumber>("SYMBOL", ::Wavenumber)

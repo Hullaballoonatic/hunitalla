@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived
 
-import hunitalla.Unit
+import hunitalla.SIUnit
 import hunitalla.quantities.derived.EquivalentDose
 
-object Sievert : Unit("Sv", EquivalentDose::class)
+object Sievert : SIUnit<EquivalentDose>("Sv", ::EquivalentDose)

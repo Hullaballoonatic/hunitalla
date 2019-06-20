@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived
 
-import hunitalla.Unit
+import hunitalla.SIUnit
 import hunitalla.quantities.derived.Capacitance
 
-object Farad : Unit("F", Capacitance::class)
+object Farad : SIUnit<Capacitance>("F", ::Capacitance)

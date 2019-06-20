@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived
 
-import hunitalla.Unit
+import hunitalla.SIUnit
 import hunitalla.quantities.derived.CatalyticActivity
 
-object Katal : Unit("kat", CatalyticActivity::class)
+object Katal : SIUnit<CatalyticActivity>("kat", ::CatalyticActivity)

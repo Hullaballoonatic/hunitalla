@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived
 
-import hunitalla.Unit
+import hunitalla.SIUnit
 import hunitalla.quantities.derived.AbsorbedDose
 
-object Gray : Unit("Gy", AbsorbedDose::class)
+object Gray : SIUnit<AbsorbedDose>("Gy", ::AbsorbedDose)
