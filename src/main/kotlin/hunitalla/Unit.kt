@@ -7,7 +7,7 @@ import kotlin.reflect.KFunction1
 interface Unit<Q: Quantity<Q>> : Named, Symbolic {
     val quantifier: KFunction1<Double, Quantity<Q>>
 
-    val siUnit: SIUnit<Q>
+    val toSIConversionFactor: Double
 
     operator fun invoke(value: Double) = quantifier(value)
 }

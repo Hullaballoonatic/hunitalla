@@ -10,8 +10,13 @@ open class SIUnit<Q: Quantity<Q>>(
 ) : Unit<Q> {
     constructor(symbol: String, quantifier: KFunction1<Double, Quantity<Q>>) : this(null, symbol, quantifier)
 
+    private val quantityRef by lazy { quantifier(0.0) }
+
+    val dimension by lazy { quantityRef.dimension }
+    val quantityType by lazy { quantityRef::class }
+
     override val name: String = name ?: javaClass.simpleName.insertSpaces()
 
-    override val siUnit: SIUnit<Q> get() = this
+    override val toSIConversionFactor: Double = 1.0
 }
 

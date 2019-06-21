@@ -3,4 +3,4 @@ package hunitalla.quantities.derived
 import hunitalla.Quantity
 import hunitalla.units.si.derived.Watt
 
-class RadiantFlux(override val value: Double) : Quantity<RadiantFlux>(Watt, M = 1, L = 2, T = -3)
+class RadiantFlux(override val value: Double) : Quantity<Power>(Watt, M = 1, L = 2, T = -3)
