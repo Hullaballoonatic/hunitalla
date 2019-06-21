@@ -4,19 +4,13 @@ package hunitalla
 
 import hunitalla.helpers.classes.vector.IntVector
 import hunitalla.helpers.classes.vector.Vector
+import hunitalla.helpers.classes.vector.toVector
 import hunitalla.helpers.functions.integer.toSuperscript
 
-open class Dimension(
-    L: Int = 0,
-    M: Int = 0,
-    T: Int = 0,
-    I: Int = 0,
-    Θ: Int = 0,
-    N: Int = 0,
-    J: Int = 0
-) : Vector<Int> by IntVector(L, M, T, I, Θ, N, J) {
-    constructor(arr: IntArray) : this(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6])
-    constructor(v: Vector<Int>) : this(v[0], v[1], v[2], v[3], v[4], v[5], v[6])
+open class Dimension(exponents: Vector<Int>) : Vector<Int> by exponents {
+    constructor(arr: IntArray) : this(arr.toVector())
+    constructor(L: Int = 0, M: Int = 0, T: Int = 0, I: Int = 0, Θ: Int = 0, N: Int = 0, J: Int = 0) :
+            this(IntVector.of(L, M, T, I, Θ, N, J))
 
     val L get() = get(0)
     val M get() = get(1)
@@ -40,9 +34,9 @@ open class Dimension(
             else -> error("wat.")
         }
 
-    operator fun times(other: Dimension): Dimension = (this + other) as Dimension
+    operator fun times(other: Dimension) = Dimension(this + other)
 
-    operator fun div(other: Dimension) = (this - other) as Dimension
+    operator fun div(other: Dimension) = Dimension(this - other)
 
     infix fun root(n: Int) = Dimension(L / n, M / n, T / n, I / n, Θ / n, N / n, J / n)
 

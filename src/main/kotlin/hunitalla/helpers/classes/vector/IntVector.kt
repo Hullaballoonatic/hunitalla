@@ -3,16 +3,21 @@ package hunitalla.helpers.classes.vector
 import kotlin.math.sqrt
 
 class IntVector(override val data: Array<Int>) : Vector<Int> {
+    constructor(values: IntArray) : this(values.toTypedArray())
     constructor(size: Int, op: (index: Int) -> Int) : this(Array(size, op))
-    constructor(vararg values: Int) : this(values.toTypedArray())
 
     override val size: Int = data.size
 
-    override fun times(other: Vector<Int>): Int = if (isCompatible(other)) zip(other) { a, b -> a * b }.sum() else error("Incompatible Vectors.")
+    override fun times(other: Vector<Int>): Int =
+        if (isCompatible(other)) zip(other) { a, b -> a * b }.sum() else error("Incompatible Vectors.")
 
-    override fun plus(other: Vector<Int>): Vector<Int> = if (isCompatible(other)) IntVector(
-        size
-    ) { this[it] + other[it] } else error("Incompatible Vectors.")
+    override fun times(scalar: Int): Vector<Int> = IntVector(size) { this[it] * scalar }
+    operator fun times(scalar: Double): Vector<Double> = DoubleVector(size) { this[it] * scalar }
+    operator fun div(divisor: Int): Vector<Int> = IntVector(size) { this[it] / divisor }
+    override fun div(divisor: Double): Vector<Double> = DoubleVector(size) { this[it] / divisor }
+
+    override fun plus(other: Vector<Int>): Vector<Int> =
+        if (isCompatible(other)) IntVector(size) { this[it] + other[it] } else error("Incompatible Vectors.")
 
     override val negation by lazy { IntVector(size) { -this[it] } }
 
@@ -23,4 +28,8 @@ class IntVector(override val data: Array<Int>) : Vector<Int> {
     override val mode by lazy { groupingBy { it }.eachCount().maxBy { it.value }?.key!!}
     override val max: Int by lazy { max()!! }
     override val min: Int by lazy { min()!! }
+
+    companion object {
+        fun of(vararg values: Int) = IntVector(values.toTypedArray())
+    }
 }

@@ -9,6 +9,8 @@ interface Vector<N: Number> : Iterable<N> {
     operator fun get(index: Int) = data[index]
 
     operator fun times(other: Vector<N>): N
+    operator fun times(scalar: N): Vector<N>
+    operator fun div(divisor: Double): Vector<Double>
     operator fun plus(other: Vector<N>): Vector<N>
     operator fun minus(other: Vector<N>): Vector<N> = plus(-other)
     operator fun unaryMinus(): Vector<N> = negation
