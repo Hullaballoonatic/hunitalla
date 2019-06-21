@@ -1,3 +1,5 @@
+@file:Suppress("NonAsciiCharacters")
+
 package hunitalla.units.si.derived
 
 typealias rad = Radian
