@@ -1,8 +1,8 @@
 package hunitalla.units.scalars.time
 
-import hunitalla.ScalarUnit
+import hunitalla.conversion.ScaledUnit
 import hunitalla.units.si.base.s
 import hunitalla.quantities.Time
-import hunitalla.times
+import hunitalla.conversion.times
 
-object Minute : ScalarUnit<Time>("min", 60 * s)
+object Minute : ScaledUnit<Time>("min", 60 * s)

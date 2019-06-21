@@ -1,12 +1,4 @@
-@file:Suppress("ObjectPropertyName", "unused", "NonAsciiCharacters")
-
-package hunitalla.extensions.prefixes
-
-import hunitalla.prefixes.ScalarPrefix
-import hunitalla.prefixes.si.*
-
-operator fun Number.times(scalar: ScalarPrefix) = scalar * this
-operator fun Double.times(scalar: ScalarPrefix) = scalar * this
+package hunitalla.prefixes.si
 
 val Number.yotta get() = Yotta * this
 val Double.yotta get() = Yotta * this
@@ -124,4 +116,3 @@ val Number.y
 val Double.y
     @JvmName("y")
     get() = Yocto * this
-

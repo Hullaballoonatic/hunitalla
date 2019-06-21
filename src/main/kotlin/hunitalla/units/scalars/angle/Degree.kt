@@ -1,9 +1,9 @@
 package hunitalla.units.scalars.angle
 
-import hunitalla.ScalarUnit
+import hunitalla.conversion.ScaledUnit
 import hunitalla.quantities.derived.PlaneAngle
 import hunitalla.units.si.derived.rad
 import kotlin.math.PI
-import hunitalla.times
+import hunitalla.conversion.times
 
-object Degree : ScalarUnit<PlaneAngle>("°", PI * rad / 180)
+object Degree : ScaledUnit<PlaneAngle>("°", PI * rad / 180)

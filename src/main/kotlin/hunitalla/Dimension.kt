@@ -12,6 +12,8 @@ open class Dimension(exponents: Vector<Int>) : Vector<Int> by exponents {
     constructor(L: Int = 0, M: Int = 0, T: Int = 0, I: Int = 0, Θ: Int = 0, N: Int = 0, J: Int = 0) :
             this(IntVector.of(L, M, T, I, Θ, N, J))
 
+    val si: SIUnit<*> by lazy { SIUnitsByDimension[this] ?: error("No such unit exists for this Dimension.") }
+
     val L get() = get(0)
     val M get() = get(1)
     val T get() = get(2)
@@ -19,8 +21,6 @@ open class Dimension(exponents: Vector<Int>) : Vector<Int> by exponents {
     val Θ get() = get(4)
     val N get() = get(5)
     val J get() = get(6)
-
-    val si: SIUnit<*> by lazy { SIUnitsByDimension[this] ?: error("No such unit exists for this Dimension.") }
 
     private val Int.baseStr
         get() = when (this) {
@@ -35,8 +35,12 @@ open class Dimension(exponents: Vector<Int>) : Vector<Int> by exponents {
         }
 
     operator fun times(other: Dimension) = Dimension(this + other)
+    operator fun times(other: Quantity<*>) = Dimension(this + other.dimension)
+    operator fun times(other: Unit<*>) = Dimension(this + other.dimension)
 
     operator fun div(other: Dimension) = Dimension(this - other)
+    operator fun div(other: Quantity<*>) = Dimension(this - other.dimension)
+    operator fun div(other: Unit<*>) = Dimension(this - other.dimension)
 
     infix fun root(n: Int) = Dimension(L / n, M / n, T / n, I / n, Θ / n, N / n, J / n)
 

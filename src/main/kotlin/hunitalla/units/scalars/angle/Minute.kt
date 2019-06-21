@@ -1,7 +1,7 @@
 package hunitalla.units.scalars.angle
 
-import hunitalla.ScalarUnit
-import hunitalla.div
+import hunitalla.conversion.ScaledUnit
+import hunitalla.conversion.div
 import hunitalla.quantities.derived.PlaneAngle
 
-object Minute : ScalarUnit<PlaneAngle>("\'", Degree / 60)
+object Minute : ScaledUnit<PlaneAngle>("\'", Degree / 60)

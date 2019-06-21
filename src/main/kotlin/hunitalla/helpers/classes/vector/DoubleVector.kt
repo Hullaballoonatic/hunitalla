@@ -31,6 +31,15 @@ class DoubleVector(override val data: Array<Double>) : Vector<Double> {
     override val max: Double by lazy { max()!! }
     override val min: Double by lazy { min()!! }
 
+    override fun hashCode(): Int = data.hashCode()
+
+    override fun equals(other: Any?): Boolean = when(other) {
+        null -> false
+        is DoubleArray -> other.contentEquals(data.toDoubleArray())
+        is Vector<*> -> data.contentEquals(other.data)
+        else -> false
+    }
+
     companion object {
         fun of(vararg values: Double) = DoubleVector(values.toTypedArray())
         fun of(vararg values: Number) = DoubleVector(Array(values.size) { values[it].toDouble() })

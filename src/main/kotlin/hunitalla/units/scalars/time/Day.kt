@@ -1,7 +1,7 @@
 package hunitalla.units.scalars.time
 
-import hunitalla.ScalarUnit
+import hunitalla.conversion.ScaledUnit
 import hunitalla.quantities.Time
-import hunitalla.times
+import hunitalla.conversion.times
 
-object Day : ScalarUnit<Time>("d", 24 * h)
+object Day : ScaledUnit<Time>("d", 24 * h)

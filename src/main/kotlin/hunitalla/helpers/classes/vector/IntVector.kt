@@ -29,6 +29,15 @@ class IntVector(override val data: Array<Int>) : Vector<Int> {
     override val max: Int by lazy { max()!! }
     override val min: Int by lazy { min()!! }
 
+    override fun hashCode() = data.hashCode()
+
+    override fun equals(other: Any?) = when(other) {
+        null -> false
+        is IntArray -> other.contentEquals(data.toIntArray())
+        is Vector<*> -> other.data.contentEquals(data)
+        else -> false
+    }
+
     companion object {
         fun of(vararg values: Int) = IntVector(values.toTypedArray())
     }
