@@ -1,6 +1,6 @@
 package hunitalla.units.si.base
 
-import hunitalla.SIUnit
+import hunitalla.Unit.SI
 import hunitalla.quantities.Temperature
 
-object Kelvin : SIUnit<Temperature>("K", ::Temperature)
+object Kelvin : SI<Temperature>("K", ::Temperature)

@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived.special
 
-import hunitalla.SIUnit
+import hunitalla.Unit.SI
 import hunitalla.quantities.derived.special.ElectricChargeDensity
 
-object CoulombPerCubicMetre : SIUnit<ElectricChargeDensity>("C/m³", ::ElectricChargeDensity)
+object CoulombPerCubicMetre : SI<ElectricChargeDensity>("C/m³", ::ElectricChargeDensity)

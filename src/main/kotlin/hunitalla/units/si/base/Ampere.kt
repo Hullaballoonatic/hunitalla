@@ -1,6 +1,6 @@
 package hunitalla.units.si.base
 
-import hunitalla.SIUnit
+import hunitalla.Unit.SI
 import hunitalla.quantities.ElectricCurrent
 
-object Ampere : SIUnit<ElectricCurrent>("A", ::ElectricCurrent)
+object Ampere : SI<ElectricCurrent>("A", ::ElectricCurrent)

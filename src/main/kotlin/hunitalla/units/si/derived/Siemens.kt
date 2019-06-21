@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived
 
-import hunitalla.SIUnit
+import hunitalla.Unit.SI
 import hunitalla.quantities.derived.ElectricalConductance
 
-object Siemens : SIUnit<ElectricalConductance>("S", ::ElectricalConductance)
+object Siemens : SI<ElectricalConductance>("S", ::ElectricalConductance)

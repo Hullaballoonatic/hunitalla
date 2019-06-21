@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived
 
-import hunitalla.SIUnit
+import hunitalla.Unit.SI
 import hunitalla.quantities.derived.Inductance
 
-object Henry : SIUnit<Inductance>("H", ::Inductance)
+object Henry : SI<Inductance>("H", ::Inductance)

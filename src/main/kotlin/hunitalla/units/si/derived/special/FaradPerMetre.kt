@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived.special
 
-import hunitalla.SIUnit
+import hunitalla.Unit.SI
 import hunitalla.quantities.derived.special.Permittivity
 
-object FaradPerMetre : SIUnit<Permittivity>("F/m", ::Permittivity)
+object FaradPerMetre : SI<Permittivity>("F/m", ::Permittivity)

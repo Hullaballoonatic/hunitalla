@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived
 
-import hunitalla.SIUnit
+import hunitalla.Unit.SI
 import hunitalla.quantities.derived.MagneticFlux
 
-object Weber : SIUnit<MagneticFlux>("Wb", ::MagneticFlux)
+object Weber : SI<MagneticFlux>("Wb", ::MagneticFlux)

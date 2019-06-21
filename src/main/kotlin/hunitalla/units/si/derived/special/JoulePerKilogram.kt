@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived.special
 
-import hunitalla.SIUnit
+import hunitalla.Unit.SI
 import hunitalla.quantities.derived.special.SpecificEnergy
 
-object JoulePerKilogram : SIUnit<SpecificEnergy>("J/kg", ::SpecificEnergy)
+object JoulePerKilogram : SI<SpecificEnergy>("J/kg", ::SpecificEnergy)

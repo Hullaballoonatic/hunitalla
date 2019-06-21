@@ -1,9 +1,6 @@
 package hunitalla.units.si.derived
 
-import hunitalla.SIUnit
-import hunitalla.helpers.errors.UnrecognizedUnitCombinationError
-import hunitalla.quantities.derived.EMF
+import hunitalla.Unit.SI
 import hunitalla.quantities.derived.Voltage
-import hunitalla.units.si.base.A
 
-object Volt : SIUnit<Voltage>("V", ::Voltage)
+object Volt : SI<Voltage>("V", ::Voltage)

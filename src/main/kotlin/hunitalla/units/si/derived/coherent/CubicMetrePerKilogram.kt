@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived.coherent
 
-import hunitalla.SIUnit
+import hunitalla.Unit.SI
 import hunitalla.quantities.derived.coherent.SpecificVolume
 
-object CubicMetrePerKilogram : SIUnit<SpecificVolume>("m³/kg", ::SpecificVolume)
+object CubicMetrePerKilogram : SI<SpecificVolume>("m³/kg", ::SpecificVolume)

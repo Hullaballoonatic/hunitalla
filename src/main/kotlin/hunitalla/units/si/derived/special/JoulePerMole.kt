@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived.special
 
-import hunitalla.SIUnit
+import hunitalla.Unit.SI
 import hunitalla.quantities.derived.special.MolarEnergy
 
-object JoulePerMole : SIUnit<MolarEnergy>("J/mol", ::MolarEnergy)
+object JoulePerMole : SI<MolarEnergy>("J/mol", ::MolarEnergy)

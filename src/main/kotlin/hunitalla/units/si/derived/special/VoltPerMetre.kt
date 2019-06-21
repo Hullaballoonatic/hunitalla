@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived.special
 
-import hunitalla.SIUnit
+import hunitalla.Unit.SI
 import hunitalla.quantities.derived.special.ElectricFieldStrength
 
-object VoltPerMetre : SIUnit<ElectricFieldStrength>("V/m", ::ElectricFieldStrength)
+object VoltPerMetre : SI<ElectricFieldStrength>("V/m", ::ElectricFieldStrength)

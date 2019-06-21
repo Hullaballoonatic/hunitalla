@@ -1,13 +1,11 @@
 package hunitalla.units.si.base
 
-import hunitalla.SIUnit
+import hunitalla.Unit.SI
 import hunitalla.quantities.Numeric
-import hunitalla.Unit
-import hunitalla.helpers.errors.UnrecognizedUnitCombinationError
 
-object One : SIUnit<Numeric>("1", ::Numeric) {
-    override fun times(unit: SIUnit<*>): SIUnit<*> = unit
-    override fun div(unit: SIUnit<*>): SIUnit<*> = unit.inverse
+object One : SI<Numeric>("1", ::Numeric) {
+    override fun times(unit: SI<*>): SI<*> = unit
+    override fun div(unit: SI<*>): SI<*> = unit.inverse
     override infix fun pow(exponent: Int) = this
     override val inverse = this
 }

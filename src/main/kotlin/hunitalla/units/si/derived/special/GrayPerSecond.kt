@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived.special
 
-import hunitalla.SIUnit
+import hunitalla.Unit.SI
 import hunitalla.quantities.derived.special.AbsorbedDoseRate
 
-object GrayPerSecond : SIUnit<AbsorbedDoseRate>("Gy/s", ::AbsorbedDoseRate)
+object GrayPerSecond : SI<AbsorbedDoseRate>("Gy/s", ::AbsorbedDoseRate)

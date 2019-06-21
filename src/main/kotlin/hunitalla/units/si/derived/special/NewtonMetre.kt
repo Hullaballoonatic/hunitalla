@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived.special
 
-import hunitalla.SIUnit
+import hunitalla.Unit.SI
 import hunitalla.quantities.derived.special.MomentOfForce
 
-object NewtonMetre : SIUnit<MomentOfForce>("N·m", ::MomentOfForce)
+object NewtonMetre : SI<MomentOfForce>("N·m", ::MomentOfForce)

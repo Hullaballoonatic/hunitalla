@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived.special
 
-import hunitalla.SIUnit
+import hunitalla.Unit.SI
 import hunitalla.quantities.derived.special.SurfaceTension
 
-object NewtonPerMetre : SIUnit<SurfaceTension>("N/m", ::SurfaceTension)
+object NewtonPerMetre : SI<SurfaceTension>("N/m", ::SurfaceTension)

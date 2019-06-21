@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived.special
 
-import hunitalla.SIUnit
+import hunitalla.Unit.SI
 import hunitalla.quantities.derived.special.EnergyDensity
 
-object JoulePerCubicMetre : SIUnit<EnergyDensity>("J/m³", ::EnergyDensity)
+object JoulePerCubicMetre : SI<EnergyDensity>("J/m³", ::EnergyDensity)

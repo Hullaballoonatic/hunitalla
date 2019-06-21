@@ -5,4 +5,4 @@ import hunitalla.helpers.extensions.conversion.times
 import hunitalla.quantities.Length
 import hunitalla.units.si.base.m
 
-object Kilometre : ScaledUnit<Length>("km", 1000 * m)
+object Millimetre : ScaledUnit<Length>("mm", 1e-3 * m)

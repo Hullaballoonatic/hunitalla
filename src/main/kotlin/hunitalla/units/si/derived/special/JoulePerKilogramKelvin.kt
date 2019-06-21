@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived.special
 
-import hunitalla.SIUnit
+import hunitalla.Unit.SI
 import hunitalla.quantities.derived.special.SpecificHeatCapacity
 
-object JoulePerKilogramKelvin : SIUnit<SpecificHeatCapacity>("J/(kg·K)", ::SpecificHeatCapacity)
+object JoulePerKilogramKelvin : SI<SpecificHeatCapacity>("J/(kg·K)", ::SpecificHeatCapacity)

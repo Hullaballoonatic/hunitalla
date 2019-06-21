@@ -1,7 +1,6 @@
 package hunitalla.units.si.derived.coherent
 
-import hunitalla.SIUnit
+import hunitalla.Unit.SI
 import hunitalla.quantities.derived.coherent.Density
-import hunitalla.quantities.derived.coherent.MassConcentration
 
-object KilogramPerCubicMetre : SIUnit<Density>("kg/m³", ::Density)
+object KilogramPerCubicMetre : SI<Density>("kg/m³", ::Density)

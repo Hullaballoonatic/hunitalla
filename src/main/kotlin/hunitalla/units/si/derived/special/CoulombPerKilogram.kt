@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived.special
 
-import hunitalla.SIUnit
+import hunitalla.Unit.SI
 import hunitalla.quantities.derived.special.Exposure
 
-object CoulombPerKilogram : SIUnit<Exposure>("C/kg", ::Exposure)
+object CoulombPerKilogram : SI<Exposure>("C/kg", ::Exposure)

@@ -1,6 +1,6 @@
 package hunitalla.units.si.base
 
-import hunitalla.SIUnit
+import hunitalla.Unit.SI
 import hunitalla.quantities.LuminousIntensity
 
-object Candela : SIUnit<LuminousIntensity>("cd", ::LuminousIntensity)
+object Candela : SI<LuminousIntensity>("cd", ::LuminousIntensity)

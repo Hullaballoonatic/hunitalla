@@ -1,6 +1,6 @@
 package hunitalla.units.si.base
 
-import hunitalla.SIUnit
+import hunitalla.Unit.SI
 import hunitalla.quantities.AmountOfSubstance
 
-object Mole : SIUnit<AmountOfSubstance>("mol", ::AmountOfSubstance)
+object Mole : SI<AmountOfSubstance>("mol", ::AmountOfSubstance)

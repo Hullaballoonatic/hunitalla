@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived.special
 
-import hunitalla.SIUnit
+import hunitalla.Unit.SI
 import hunitalla.quantities.derived.special.ThermalConductivity
 
-object WattPerMetreKelvin : SIUnit<ThermalConductivity>("W/(m·K)", ::ThermalConductivity)
+object WattPerMetreKelvin : SI<ThermalConductivity>("W/(m·K)", ::ThermalConductivity)

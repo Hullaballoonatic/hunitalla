@@ -1,10 +1,6 @@
 package hunitalla.units.si.derived
 
-import hunitalla.SIUnit
-import hunitalla.Unit
-import hunitalla.helpers.errors.UnrecognizedUnitCombinationError
-import hunitalla.quantities.derived.*
-import hunitalla.units.si.base.Metre
-import hunitalla.units.si.derived.coherent.SquareMetre
+import hunitalla.Unit.SI
+import hunitalla.quantities.derived.Force
 
-object Newton : SIUnit<Force>("N", ::Force)
+object Newton : SI<Force>("N", ::Force)

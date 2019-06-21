@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived.coherent
 
-import hunitalla.SIUnit
+import hunitalla.Unit.SI
 import hunitalla.quantities.derived.coherent.Luminance
 
-object CandelaPerSquareMetre : SIUnit<Luminance>("cd/m²", ::Luminance)
+object CandelaPerSquareMetre : SI<Luminance>("cd/m²", ::Luminance)

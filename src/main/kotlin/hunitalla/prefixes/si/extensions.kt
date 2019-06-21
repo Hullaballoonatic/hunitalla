@@ -1,3 +1,5 @@
+@file:Suppress("unused", "ObjectPropertyName", "NonAsciiCharacters")
+
 package hunitalla.prefixes.si
 
 val Number.yotta get() = Yotta * this

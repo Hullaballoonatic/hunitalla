@@ -1,6 +1,6 @@
 package hunitalla.units.si.derived.coherent
 
-import hunitalla.SIUnit
+import hunitalla.Unit.SI
 import hunitalla.quantities.derived.coherent.MagneticFieldStrength
 
-object AmperePerMetre : SIUnit<MagneticFieldStrength>("A/m", ::MagneticFieldStrength)
+object AmperePerMetre : SI<MagneticFieldStrength>("A/m", ::MagneticFieldStrength)
