@@ -3,4 +3,4 @@ package hunitalla.quantities.derived.coherent
 import hunitalla.Quantity
 import hunitalla.units.si.derived.coherent.*
 
-class Area(override val value: Double) : Quantity<Area>(SquareMetre, L = 2)
+class Area(value: Double) : Quantity<Area>(value, SquareMetre, L = 2)

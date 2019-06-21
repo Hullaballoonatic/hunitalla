@@ -3,4 +3,4 @@ package hunitalla.quantities
 import hunitalla.Quantity
 import hunitalla.units.si.base.Metre
 
-class Length(override val value: Double) : Quantity<Length>(Metre, L = 1)
+class Length(value: Double) : Quantity<Length>(value, Metre, L = 1)

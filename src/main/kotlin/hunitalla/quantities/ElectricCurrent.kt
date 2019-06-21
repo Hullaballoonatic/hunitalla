@@ -3,4 +3,4 @@ package hunitalla.quantities
 import hunitalla.Quantity
 import hunitalla.units.si.base.Ampere
 
-class ElectricCurrent(override val value: Double) : Quantity<ElectricCurrent>(Ampere, I = 1)
+class ElectricCurrent(value: Double) : Quantity<ElectricCurrent>(value, Ampere, I = 1)

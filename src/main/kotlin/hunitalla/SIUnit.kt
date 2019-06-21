@@ -1,3 +1,5 @@
+@file:Suppress("MemberVisibilityCanBePrivate")
+
 package hunitalla
 
 import hunitalla.helpers.functions.string.insertSpaces
@@ -15,8 +17,14 @@ open class SIUnit<Q: Quantity<Q>>(
     val dimension by lazy { quantityRef.dimension }
     val quantityType by lazy { quantityRef::class }
 
+    open operator fun times(unit: SIUnit<*>): SIUnit<*> = dimension.times(unit.dimension).si
+    open operator fun div(unit: SIUnit<*>): SIUnit<*> = dimension.div(unit.dimension).si
+    open infix fun pow(exponent: Int): SIUnit<*> = dimension.pow(exponent).si
+
     override val name: String = name ?: javaClass.simpleName.insertSpaces()
 
     override val toSIConversionFactor: Double = 1.0
+
+    open val inverse: SIUnit<*> = dimension.pow(-1).si
 }
 
