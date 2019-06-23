@@ -1,6 +1,6 @@
 package hunitalla.quantities.derived
 
 import hunitalla.Quantity
-import hunitalla.units.si.derived.Sievert
+import hunitalla.units.si.Sv
 
-class EquivalentDose(value: Double) : Quantity<EquivalentDose>(value, Sievert, L = 2, T = -2)
+class EquivalentDose(value: Double) : Quantity<EquivalentDose>(value, Sv, L = 2, T = -2)

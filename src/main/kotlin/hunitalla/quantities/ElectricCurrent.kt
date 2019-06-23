@@ -1,6 +1,6 @@
 package hunitalla.quantities
 
 import hunitalla.Quantity
-import hunitalla.units.si.base.Ampere
+import hunitalla.units.si.A
 
-class ElectricCurrent(value: Double) : Quantity<ElectricCurrent>(value, Ampere, I = 1)
+class ElectricCurrent(value: Double) : Quantity<ElectricCurrent>(value, A, I = 1)

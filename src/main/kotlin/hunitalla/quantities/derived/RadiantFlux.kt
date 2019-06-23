@@ -1,6 +1,6 @@
 package hunitalla.quantities.derived
 
 import hunitalla.Quantity
-import hunitalla.units.si.derived.Watt
+import hunitalla.units.si.W
 
-class RadiantFlux(value: Double) : Quantity<Power>(value, Watt, M = 1, L = 2, T = -3)
+class RadiantFlux(value: Double) : Quantity<Power>(value, W, M = 1, L = 2, T = -3)

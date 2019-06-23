@@ -1,6 +1,6 @@
 package hunitalla.quantities.derived
 
 import hunitalla.Quantity
-import hunitalla.units.si.derived.Hertz
+import hunitalla.units.si.Hz
 
-class Frequency(value: Double) : Quantity<Frequency>(value, Hertz, T = -1)
+class Frequency(value: Double) : Quantity<Frequency>(value, Hz, T = -1)

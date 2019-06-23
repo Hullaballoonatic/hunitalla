@@ -1,6 +1,6 @@
 package hunitalla.quantities.derived
 
 import hunitalla.Quantity
-import hunitalla.units.si.derived.Lux
+import hunitalla.units.si.lx
 
-class Illuminance(value: Double) : Quantity<Illuminance>(value, Lux, L = -2, J = 1)
+class Illuminance(value: Double) : Quantity<Illuminance>(value, lx, L = -2, J = 1)

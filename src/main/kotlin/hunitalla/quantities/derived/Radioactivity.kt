@@ -1,6 +1,6 @@
 package hunitalla.quantities.derived
 
 import hunitalla.Quantity
-import hunitalla.units.si.derived.Becquerel
+import hunitalla.units.si.Bq
 
-class Radioactivity(value: Double) : Quantity<Radioactivity>(value, Becquerel, T = -1)
+class Radioactivity(value: Double) : Quantity<Radioactivity>(value, Bq, T = -1)

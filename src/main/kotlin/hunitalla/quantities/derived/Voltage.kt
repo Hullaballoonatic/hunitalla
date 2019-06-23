@@ -1,6 +1,6 @@
 package hunitalla.quantities.derived
 
 import hunitalla.Quantity
-import hunitalla.units.si.derived.Volt
+import hunitalla.units.si.V
 
-class Voltage(value: Double) : Quantity<Voltage>(value, Volt, M = 1, L = 2, T = -3, I = -1)
+class Voltage(value: Double) : Quantity<Voltage>(value, V, M = 1, L = 2, T = -3, I = -1)

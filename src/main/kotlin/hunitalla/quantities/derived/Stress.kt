@@ -1,6 +1,6 @@
 package hunitalla.quantities.derived
 
 import hunitalla.Quantity
-import hunitalla.units.si.derived.Pascal
+import hunitalla.units.si.Pa
 
-class Stress(value: Double) : Quantity<Pressure>(value, Pascal, M = 1, L = -1, T = -2)
+class Stress(value: Double) : Quantity<Pressure>(value, Pa, M = 1, L = -1, T = -2)

@@ -1,6 +1,6 @@
 package hunitalla.quantities
 
 import hunitalla.Quantity
-import hunitalla.units.si.base.Metre
+import hunitalla.units.si.m
 
-class Length(value: Double) : Quantity<Length>(value, Metre, L = 1)
+class Length(value: Double) : Quantity<Length>(value, m, L = 1)

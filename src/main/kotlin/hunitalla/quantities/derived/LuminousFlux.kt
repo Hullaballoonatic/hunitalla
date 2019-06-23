@@ -1,6 +1,6 @@
 package hunitalla.quantities.derived
 
 import hunitalla.Quantity
-import hunitalla.units.si.derived.Lumen
+import hunitalla.units.si.lm
 
-class LuminousFlux(value: Double) : Quantity<LuminousFlux>(value, Lumen, J = 1)
+class LuminousFlux(value: Double) : Quantity<LuminousFlux>(value, lm, J = 1)

@@ -1,6 +1,6 @@
 package hunitalla.quantities
 
 import hunitalla.Quantity
-import hunitalla.units.si.base.Mole
+import hunitalla.units.si.mol
 
-class AmountOfSubstance(value: Double) : Quantity<AmountOfSubstance>(value, Mole, N = 1)
+class AmountOfSubstance(value: Double) : Quantity<AmountOfSubstance>(value, mol, N = 1)

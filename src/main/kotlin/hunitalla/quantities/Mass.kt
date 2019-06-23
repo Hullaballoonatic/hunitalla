@@ -1,6 +1,6 @@
 package hunitalla.quantities
 
 import hunitalla.Quantity
-import hunitalla.units.si.base.Kilogram
+import hunitalla.units.si.kg
 
-class Mass(value: Double) : Quantity<Mass>(value, Kilogram, M = 1)
+class Mass(value: Double) : Quantity<Mass>(value, kg, M = 1)
