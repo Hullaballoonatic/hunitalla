@@ -1,4 +1,6 @@
 # Hunitalla
+A units of measurement DSL / Library akin to Java's Units of Measurement, but utilizing more of Kotlin's features, e.g. operator overloads, extension properties, etc.
+
 Currently in testing and bug fixing of MVP.
 
 Upcoming additions
