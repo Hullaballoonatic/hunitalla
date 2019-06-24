@@ -2,9 +2,9 @@
 
 package hunitalla.units.si
 
-val Number.m get() = m(this)
+val Number.m get() = m(toDouble())
 val Double.m get() = m(this)
-val Number.metre get() = m(this)
+val Number.metre get() = m(toDouble())
 val Double.metre get() = m(this)
 
 val Number.kg get() = kg(this)
@@ -44,8 +44,8 @@ val Double.t get() = t(this)
 val Number.tonne get() = t(this)
 val Double.tonne get() = t(this)
 
-val Number.da get() = Da(this)
-val Double.da get() = Da(this)
+val Number.Da get() = Da(this)
+val Double.Da get() = Da(this)
 val Number.dalton get() = Da(this)
 val Double.dalton get() = Da(this)
 
@@ -84,6 +84,11 @@ val Double.km get() = km(this)
 val Number.kilometre get() = km(this)
 val Double.kilometre get() = km(this)
 
+val Number.mm get() = mm(this)
+val Double.mm get() = mm(this)
+val Number.millimetre get() = mm(this)
+val Double.millimetre get() = mm(this)
+
 val Number.g get() = g(this)
 val Double.g get() = g(this)
 val Number.gram get() = g(this)
@@ -94,6 +99,12 @@ val Double.min get() = min(this)
 val Number.minute get() = min(this)
 val Double.minute get() = min(this)
 
+val Number.h
+    @JvmName("h")
+    get() = h(this)
+val Double.h
+    @JvmName("h")
+    get() = h(this)
 val Number.hr get() = h(this)
 val Double.hr get() = h(this)
 val Number.hour get() = h(this)
@@ -104,11 +115,10 @@ val Double.d get() = d(this)
 val Number.day get() = d(this)
 val Double.day get() = d(this)
 
-
-val Number.celsius get() = SI.DegreeCelsius(this)
-val Double.celsius get() = SI.DegreeCelsius(this)
-val Number.centigrade get() = SI.DegreeCelsius(this)
-val Double.centigrade get() = SI.DegreeCelsius(this)
+val Number.celsius get() = SI.DegreeCelsius.invoke(this)
+val Double.celsius get() = SI.DegreeCelsius.invoke(this)
+val Number.centigrade get() = SI.DegreeCelsius.invoke(this)
+val Double.centigrade get() = SI.DegreeCelsius.invoke(this)
 
 val Number.rad get() = rad(this)
 val Double.rad get() = rad(this)

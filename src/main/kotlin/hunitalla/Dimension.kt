@@ -1,19 +1,16 @@
-@file:Suppress("NonAsciiCharacters", "PropertyName", "unused", "MemberVisibilityCanBePrivate")
+@file:Suppress("NonAsciiCharacters", "PropertyName", "unused", "MemberVisibilityCanBePrivate", "UNCHECKED_CAST")
 
 package hunitalla
 
-import hunitalla.Unit.BaseUnit
+import hunitalla.Unit.Base
 import hunitalla.helpers.classes.vector.IntVector
 import hunitalla.helpers.classes.vector.Vector
-import hunitalla.helpers.classes.vector.toVector
 import hunitalla.helpers.functions.integer.toSuperscript
 
 open class Dimension(exponents: Vector<Int>) : Vector<Int> by exponents {
-    constructor(arr: IntArray) : this(arr.toVector())
+    constructor(arr: IntArray) : this(IntVector(arr))
     constructor(L: Int = 0, M: Int = 0, T: Int = 0, I: Int = 0, Θ: Int = 0, N: Int = 0, J: Int = 0) :
             this(IntVector.of(L, M, T, I, Θ, N, J))
-
-    val baseUnit: BaseUnit<*> by lazy { SIUnitsByDimension[this] ?: error("No such unit exists for this Dimension.") }
 
     val L get() = get(0)
     val M get() = get(1)
@@ -64,8 +61,5 @@ open class Dimension(exponents: Vector<Int>) : Vector<Int> by exponents {
         }
     }
 
-    companion object {
-        val SIUnitsByDimension: MutableMap<Dimension, BaseUnit<*>> =
-            TODO("Add every baseUnit unit into here...? Find a way to get object declarations to automatically add themselves into here?") // 1:1
-    }
+    operator fun get(unitSystem: UnitSystem): Base<*>? = unitSystem[this]
 }

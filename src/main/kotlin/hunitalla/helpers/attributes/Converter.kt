@@ -1,5 +1,6 @@
 package hunitalla.helpers.attributes
 
 interface Converter<F, T> {
-    fun convert(from: F): T
+    val forward: (from: F) -> T
+    val reverse: (from: T) -> F
 }

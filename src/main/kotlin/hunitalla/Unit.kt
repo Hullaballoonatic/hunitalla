@@ -2,94 +2,81 @@
 
 package hunitalla
 
+import hunitalla.UnitSystem.GetBy
+import hunitalla.UnitSystem.GetBy.*
+import hunitalla.conversion.BaseConverter
 import hunitalla.helpers.attributes.Named
 import hunitalla.helpers.attributes.Symbolic
-import hunitalla.helpers.attributes.Valuable
 import hunitalla.helpers.functions.string.insertSpaces
+import hunitalla.units.si.SI
 import kotlin.reflect.KClass
 import kotlin.reflect.KFunction1
 
-interface Unit<Q : Quantity<Q>> : Named, Symbolic {
-    val quantifier: KFunction1<Double, Quantity<Q>>
-    val baseValueOf: (Double) -> Double
+sealed class Unit<Q : Quantity<Q>>(
+    name: String? = null,
+    override val symbol: String,
+    quantifier: KFunction1<Double, Quantity<Q>>,
+    val system: UnitSystem
+) : Named, Symbolic {
+    override val name = name ?: javaClass.simpleName.insertSpaces()
 
-    operator fun invoke(value: Double) = quantifier(value)
+    abstract val base: Base<Q>
+
+    abstract fun convertToBase(value: Double): Double
+    abstract fun convertFromBase(baseValue: Double): Double
+
+    operator fun invoke(value: Double) = quantityRef.of(value)
     operator fun invoke(value: Number) = invoke(value.toDouble())
 
-    val quantityRef: Quantity<Q>
+    val quantityRef: Quantity<Q> by lazy { quantifier(0.0) }
 
-    val dimension: Dimension
-    val quantityType: KClass<out Quantity<Q>>
+    val dimension: Dimension by lazy { quantityRef.dimension }
+    val quantityType: KClass<out Quantity<Q>> by lazy { quantityRef::class }
 
-    operator fun times(unit: Unit<*>): Unit<*> = dimension.times(unit.dimension).baseUnit
-    operator fun div(unit: Unit<*>): Unit<*> = dimension.div(unit.dimension).baseUnit
-    infix fun pow(exponent: Int): Unit<*> = dimension.pow(exponent).baseUnit
+    open operator fun times(unit: Unit<*>): Unit<*>? = dimension.times(unit.dimension)[system]
+    open operator fun div(unit: Unit<*>): Unit<*>? = dimension.div(unit.dimension)[system]
+    open infix fun pow(exponent: Int): Unit<*>? = dimension.pow(exponent)[system]
 
-    val inverse: Unit<*>
+    open val inverse: Unit<*>? by lazy { (dimension pow -1)[system] }
 
-    object UnrecognizedCombinationError : Error("Unrecognized combination of units.")
+    operator fun get(by: GetBy): String = when (by) {
+        NAME -> name
+        SYMBOL -> symbol
+        TO_STRING -> toString()
+    }
 
-    open class BaseUnit<Q : Quantity<Q>>(
+    open class Base<Q : Quantity<Q>>(
         name: String? = null,
-        override val symbol: String,
-        override val quantifier: KFunction1<Double, Quantity<Q>>,
-        override val baseValueOf: (Double) -> Double = { it }
-    ) : Unit<Q> {
-        override val name: String = name ?: javaClass.simpleName.insertSpaces()
-
+        symbol: String,
+        quantifier: KFunction1<Double, Quantity<Q>>,
+        system: UnitSystem = SI
+    ) : Unit<Q>(name, symbol, quantifier, system) {
         constructor(symbol: String, quantifier: KFunction1<Double, Quantity<Q>>) : this(null, symbol, quantifier)
-        constructor(name: String, symbol: String, conversion: Scalar<Q>) :
-                this(name, symbol, conversion.unit.quantifier, { conversion.value * it })
 
-        constructor(symbol: String, conversion: Scalar<Q>) :
-                this(null, symbol, conversion.unit.quantifier, { conversion.value * it })
+        override val base by lazy { this }
 
-        constructor(name: String, symbol: String, shift: Shifter<Q>) :
-                this(name, symbol, shift.unit.quantifier, { shift.value + it })
-
-        constructor(symbol: String, shift: Shifter<Q>) :
-                this(null, symbol, shift.unit.quantifier, { shift.value + it })
-
-        override val quantityRef by lazy { quantifier(0.0) }
-
-        override val dimension by lazy { quantityRef.dimension }
-        override val quantityType by lazy { quantityRef::class }
-
-        override val inverse: BaseUnit<*> by lazy { dimension.pow(-1).baseUnit }
+        override fun convertToBase(value: Double) = value
+        override fun convertFromBase(baseValue: Double) = baseValue
     }
 
-    class Shifter<Q : Quantity<Q>> private constructor(override val value: Double, val unit: Unit<Q>) :
-        Valuable<Double> {
-        companion object {
-            operator fun <Q : Quantity<Q>> invoke(shift: Double, unit: Unit<Q>) =
-                Shifter(unit.baseValueOf(shift), unit)
+    open class Converted<Q : Quantity<Q>>(
+        name: String? = null,
+        symbol: String,
+        val converter: BaseConverter<Q>,
+        system: UnitSystem = SI
+    ) : Unit<Q>(name, symbol, converter.unit::invoke, system) {
+        constructor(symbol: String, converter: BaseConverter<Q>, system: UnitSystem = SI) :
+                this(null, symbol, converter, system)
 
-            operator fun <Q : Quantity<Q>> invoke(shift: Number, unit: Unit<Q>) =
-                Shifter(unit.baseValueOf(shift.toDouble()), unit)
-        }
+        constructor(name: String, symbol: String, ratio: Quantity<Q>, system: UnitSystem = SI) :
+                this(name, symbol, BaseConverter.Scalar(ratio), system)
 
-        operator fun plus(shift: Double) = Shifter(this.value + shift, unit)
-        operator fun plus(shift: Number) = plus(shift.toDouble())
-        operator fun minus(shift: Double) = Shifter(this.value - shift, unit)
-        operator fun minus(shift: Number) = minus(shift.toDouble())
-        operator fun unaryMinus() = negation
+        constructor(symbol: String, ratio: Quantity<Q>, system: UnitSystem = SI) :
+                this(null, symbol, BaseConverter.Scalar(ratio), system)
 
-        val negation: Shifter<Q> by lazy { Shifter(-value, unit) }
-    }
+        override val base by lazy { converter.baseUnit }
 
-    class Scalar<Q : Quantity<Q>> private constructor(override val value: Double, val unit: Unit<Q>) :
-        Valuable<Double> {
-        companion object {
-            operator fun <Q : Quantity<Q>> invoke(factor: Double, unit: Unit<Q>) =
-                Scalar(unit.baseValueOf(factor), unit)
-
-            operator fun <Q : Quantity<Q>> invoke(factor: Number, unit: Unit<Q>) =
-                Scalar(unit.baseValueOf(factor.toDouble()), unit)
-        }
-
-        operator fun div(divisor: Number) = div(divisor.toDouble())
-        operator fun div(divisor: Double) = Scalar(value / divisor, unit)
-        operator fun times(scalar: Number) = times(scalar.toDouble())
-        operator fun times(scalar: Double) = Scalar(value * scalar, unit)
+        override fun convertFromBase(baseValue: Double) = converter.fromBase(baseValue)
+        override fun convertToBase(value: Double) = converter.toBase(value)
     }
 }

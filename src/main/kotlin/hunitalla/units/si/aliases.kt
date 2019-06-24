@@ -3,65 +3,68 @@
 package hunitalla.units.si
 
 // Base Units
-typealias m = SI.Metre
+val m = SI.Metre
 
-typealias kg = SI.Kilogram
-typealias s = SI.Second
-typealias A = SI.Ampere
-typealias K = SI.Kelvin
-typealias mol = SI.Mole
-typealias cd = SI.Candela
+val kg = SI.Kilogram
+val s = SI.Second
+val A = SI.Ampere
+val K = SI.Kelvin
+val mol = SI.Mole
+val cd = SI.Candela
 
 // Area
-typealias ha = SI.Hectare
+val ha = SI.Hectare
 
 // Energy
-typealias eV = SI.Electronvolt
+val eV = SI.Electronvolt
 
 // Length
-typealias au = SI.AstronomicalUnit
+val au = SI.AstronomicalUnit
 
-typealias km = SI.Kilometre
-typealias mm = SI.Millimetre
+val km = SI.Kilometre
+val mm = SI.Millimetre
 
 // Mass
-typealias Da = SI.Dalton
+val Da = SI.Dalton
 
-typealias u = SI.Dalton
-typealias g = SI.Gram
-typealias t = SI.Tonne
+val u = SI.Dalton
+val g = SI.Gram
+val t = SI.Tonne
 
 // Time
-typealias min = SI.Minute
+val min = SI.Minute
 
-typealias h = SI.Hour
-typealias d = SI.Day
+val h = SI.Hour
+val d = SI.Day
 
 // Volume
-typealias L = SI.Litre
+val L = SI.Litre
 
-typealias mL = SI.Millilitre
+val mL = SI.Millilitre
 
 // Derived
-typealias rad = SI.Radian
+val rad = SI.Radian
 
-typealias sr = SI.Steradian
-typealias Hz = SI.Hertz
-typealias N = SI.Newton
-typealias Pa = SI.Pascal
-typealias J = SI.Joule
-typealias W = SI.Watt
-typealias C = SI.Coulomb
-typealias V = SI.Volt
-typealias F = SI.Farad
-typealias Ω = SI.Ohm
-typealias S = SI.Siemens
-typealias Wb = SI.Weber
-typealias T = SI.Tesla
-typealias H = SI.Henry
-typealias lm = SI.Lumen
-typealias lx = SI.Lux
-typealias Bq = SI.Becquerel
-typealias Gy = SI.Gray
-typealias Sv = SI.Sievert
-typealias kat = SI.Katal
+val sr = SI.Steradian
+val Hz = SI.Hertz
+val N = SI.Newton
+val Pa = SI.Pascal
+val J = SI.Joule
+val W = SI.Watt
+val C = SI.Coulomb
+val V = SI.Volt
+val F = SI.Farad
+val Ω = SI.Ohm
+val S = SI.Siemens
+    @JvmName("S") get() = field
+val Wb = SI.Weber
+val T = SI.Tesla
+    @JvmName("T") get() = field
+val H = SI.Henry
+    @JvmName("H") get() = field
+val lm = SI.Lumen
+val lx = SI.Lux
+val Bq = SI.Becquerel
+val Gy = SI.Gray
+val Sv = SI.Sievert
+val kat = SI.Katal
