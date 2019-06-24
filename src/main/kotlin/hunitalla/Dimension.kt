@@ -7,7 +7,7 @@ import hunitalla.helpers.classes.vector.IntVector
 import hunitalla.helpers.classes.vector.Vector
 import hunitalla.helpers.functions.integer.toSuperscript
 
-open class Dimension(exponents: Vector<Int>) : Vector<Int> by exponents {
+class Dimension(exponents: Vector<Int>) : Vector<Int> by exponents {
     constructor(arr: IntArray) : this(IntVector(arr))
     constructor(L: Int = 0, M: Int = 0, T: Int = 0, I: Int = 0, Θ: Int = 0, N: Int = 0, J: Int = 0) :
             this(IntVector.of(L, M, T, I, Θ, N, J))
