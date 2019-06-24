@@ -2,8 +2,8 @@
 Currently in testing and bug fixing of MVP.
 
 Upcoming additions
-Expanded conversion between units of the same quantity type.
-String parsing
+* Expanded conversion between units of the same quantity type.
+* String parsing
 
 I'll improve this read me sometime soon.
 ## Examples
