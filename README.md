@@ -13,5 +13,7 @@ I'll improve this read me sometime soon.
 val mass: Quantity<Mass> = 11.kg
 val volume: Quantity<Volume> = 1.m * 50.mm * 12.c.m
 val density: Quantity<Density> = mass / volume
+
+val acceleration = 5.km/s/s
 ```
 The type declarations are not necessary. I included them in the example to illustrate that the operations automatically convert to the appropriate new quantity.
