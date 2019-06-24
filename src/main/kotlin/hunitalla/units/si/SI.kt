@@ -2,7 +2,6 @@
 
 package hunitalla.units.si
 
-import hunitalla.Unit
 import hunitalla.Unit.Base
 import hunitalla.Unit.Converted
 import hunitalla.UnitSystem
@@ -17,12 +16,14 @@ import kotlin.math.PI
 
 object SI : UnitSystem("International System invoke Units") {
     // The 7 Base Units
-    val Metre = add(object : Base<Length>("m", ::Length) {
-        override operator fun div(unit: Unit<*>) = when (unit) {
-            this -> rad
-            else -> super.div(unit)
-        }
-    })
+    val Metre = add(Base("m", ::Length))
+    // TODO: object : Base<Length>("m", ::Length) {
+    //        @Suppress("UNCHECKED_CAST")
+    //        override operator fun <T : Quantity<T>> div(unit: Unit<*>): Unit<T> = when (unit) {
+    //            this -> rad as Unit<T>
+    //            else -> super.div(unit)
+    //        }
+    //    }
     val Kilogram = add(Base("g", ::Mass))
     val Kelvin = add(Base("K", ::Temperature))
     val Second = add(Base("s", ::Time))
@@ -53,12 +54,14 @@ object SI : UnitSystem("International System invoke Units") {
     val RadianPerSecond = add(Base("rad/s", ::AngularVelocity))
 
     // Area
-    val SquareMetre = add(object : Base<Area>("m²", ::Area) {
-        override operator fun div(unit: Unit<*>) = when (unit) {
-            this -> sr
-            else -> super.div(unit)
-        }
-    })
+    // TODO: object : Base<Area>("m²", ::Area) {
+    //        @Suppress("UNCHECKED_CAST")
+    //        override operator fun <T : Quantity<T>> div(unit: Unit<*>): Unit<T> = when (unit) {
+    //            this -> sr as Unit<T>
+    //            else -> super.div(unit)
+    //        }
+    //    }
+    val SquareMetre = add(Base("m²", ::Area))
 
     val Hectare = add(Converted("Hectare", "ha", 1e4 * SquareMetre))
 

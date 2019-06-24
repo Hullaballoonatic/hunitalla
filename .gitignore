@@ -14,6 +14,9 @@ build/
 # Intellij Files
 .idea/
 
+# libraries
+lib/
+
 # Local configuration file (sdk path, etc)
 local.properties
 

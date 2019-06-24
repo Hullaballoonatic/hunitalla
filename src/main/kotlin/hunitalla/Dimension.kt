@@ -61,5 +61,5 @@ class Dimension(exponents: Vector<Int>) : Vector<Int> by exponents {
         }
     }
 
-    operator fun get(unitSystem: UnitSystem): Base<*>? = unitSystem[this]
+    operator fun <Q : Quantity<Q>> get(unitSystem: UnitSystem): Base<Q>? = unitSystem[this] as Base<Q>?
 }

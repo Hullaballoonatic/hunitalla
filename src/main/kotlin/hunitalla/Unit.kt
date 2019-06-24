@@ -25,19 +25,22 @@ sealed class Unit<Q : Quantity<Q>>(
     abstract fun convertToBase(value: Double): Double
     abstract fun convertFromBase(baseValue: Double): Double
 
-    operator fun invoke(value: Double) = quantityRef.of(value)
-    operator fun invoke(value: Number) = invoke(value.toDouble())
+    operator fun invoke(value: Double): Quantity<Q> = quantityRef.of(value)
+    operator fun invoke(value: Number): Quantity<Q> = invoke(value.toDouble())
 
     val quantityRef: Quantity<Q> by lazy { quantifier(0.0) }
 
     val dimension: Dimension by lazy { quantityRef.dimension }
     val quantityType: KClass<out Quantity<Q>> by lazy { quantityRef::class }
 
-    open operator fun times(unit: Unit<*>): Unit<*>? = dimension.times(unit.dimension)[system]
-    open operator fun div(unit: Unit<*>): Unit<*>? = dimension.div(unit.dimension)[system]
-    open infix fun pow(exponent: Int): Unit<*>? = dimension.pow(exponent)[system]
+    open operator fun <T : Quantity<T>> times(unit: Unit<*>): Unit<T> =
+        dimension.times(unit.dimension)[system] ?: throw Quantity.UnrecognizedCombinationError
 
-    open val inverse: Unit<*>? by lazy { (dimension pow -1)[system] }
+    open operator fun <T : Quantity<T>> div(unit: Unit<*>): Unit<T> =
+        dimension.div(unit.dimension)[system] ?: throw Quantity.UnrecognizedCombinationError
+
+    open infix fun <T : Quantity<T>> pow(exponent: Int): Unit<T> =
+        dimension.pow(exponent)[system] ?: throw Quantity.UnrecognizedCombinationError
 
     operator fun get(by: GetBy): String = when (by) {
         NAME -> name
@@ -79,4 +82,6 @@ sealed class Unit<Q : Quantity<Q>>(
         override fun convertFromBase(baseValue: Double) = converter.fromBase(baseValue)
         override fun convertToBase(value: Double) = converter.toBase(value)
     }
+
+    override fun toString() = "$name ($symbol) belonging to system: $system"
 }

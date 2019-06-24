@@ -51,32 +51,33 @@ abstract class Quantity<Q : Quantity<Q>>(
     operator fun times(scalar: Number) = times(scalar.toDouble())
     operator fun times(scalar: Double) = of(value * scalar)
 
-    operator fun times(unit: Unit<*>): Quantity<*> =
-        (dimension * unit)[unit.system]?.let { it: Base<*> ->
-            it.invoke(it.convertFromBase(baseValue))
-        } ?: throw UnrecognizedCombinationError
+    operator fun <T : Quantity<T>> times(unit: Unit<*>) =
+        (dimension * unit).get<T>(unit.system)?.let { it.invoke(it.convertFromBase(baseValue)) }
+            ?: throw UnrecognizedCombinationError
 
-
-    operator fun div(unit: Unit<*>): Quantity<*> = (dimension / unit)[unit.system]?.let { it: Base<*> ->
-        it.invoke(it.convertFromBase(baseValue))
-    } ?: throw UnrecognizedCombinationError
+    operator fun <T : Quantity<T>> div(unit: Unit<*>) =
+        (dimension / unit).get<T>(unit.system)?.let { it.invoke(it.convertFromBase(baseValue)) }
+            ?: throw UnrecognizedCombinationError
 
     operator fun div(divisor: Number) = div(divisor.toDouble())
     operator fun div(divisor: Double) = of(value / divisor)
 
-    operator fun times(other: Quantity<*>): Quantity<*> = (dimension * other)[unit.system]?.let { it: Base<*> ->
-        it.invoke(it.convertFromBase(baseValue * other.baseValue))
-    } ?: throw UnrecognizedCombinationError
+    operator fun <T : Quantity<T>> times(other: Quantity<*>) =
+        (dimension * other).get<T>(unit.system)?.let { it.invoke(it.convertFromBase(baseValue * other.baseValue)) }
+            ?: throw UnrecognizedCombinationError
 
-    operator fun div(other: Quantity<*>): Quantity<*> = (dimension / other)[unit.system]?.let { it: Base<*> ->
-        it.invoke(it.convertFromBase(baseValue / other.baseValue))
-    } ?: throw UnrecognizedCombinationError
+    operator fun <T : Quantity<T>> div(other: Quantity<*>) =
+        (dimension / other).get<T>(unit.system)?.let { it.invoke(it.convertFromBase(baseValue / other.baseValue)) }
+            ?: throw UnrecognizedCombinationError
 
-    infix fun pow(exponent: Int) =
-        (dimension pow exponent)[unit.system]?.invoke(value) ?: throw UnrecognizedCombinationError
+    infix fun <T : Quantity<T>> pow(exponent: Int) =
+        (dimension pow exponent).get<T>(unit.system)?.invoke(value) ?: throw UnrecognizedCombinationError
 
-    infix fun root(base: Int) = (dimension root base)[unit.system]?.invoke(value) ?: throw UnrecognizedCombinationError
+    infix fun <T : Quantity<T>> root(base: Int) =
+        (dimension root base).get<T>(unit.system)?.invoke(value) ?: throw UnrecognizedCombinationError
 
     fun of(value: Double): Quantity<Q> = unit.invoke(value)
     fun of(value: Number): Quantity<Q> = unit.invoke(value)
+
+    override fun toString() = "$value${unit.symbol}"
 }
